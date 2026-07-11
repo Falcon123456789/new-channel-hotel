@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from crownhotel.com.pg/booking.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Jun 2026 02:26:19 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Book Your Stay | Crown Hotel</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<header class="p-3 bg-dark text-white text-center">
+    <h2>Crown Hotel Booking</h2>
+</header>
+
+<div class="container margin_120_95">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <div class="card p-4 shadow">
+
+                <h4 class="mb-4">Reservation Form</h4>
+
+                <form action="https://crownhotel.com.pg/booking_mail.php" method="POST">
+
+                    <!-- Guest Info -->
+                    <h6>Guest Information</h6>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" name="name" class="form-control mb-3" placeholder="Full Name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="email" name="email" class="form-control mb-3" placeholder="Email Address" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="phone" class="form-control mb-3" placeholder="Phone Number">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="nationality" class="form-control mb-3" placeholder="Nationality">
+                        </div>
+                    </div>
+
+                    <!-- Booking Details -->
+                    <h6>Booking Details</h6>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Check-in</label>
+                            <input type="date" id="checkin" name="checkin" class="form-control mb-3" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Check-out</label>
+                            <input type="date" id="checkout" name="checkout" class="form-control mb-3" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="number" name="guests" class="form-control mb-3" placeholder="Number of Guests">
+                        </div>
+                    </div>
+
+                    <!-- Room -->
+                    <h6>Room Selection</h6>
+                    <select name="room" class="form-control mb-3">
+                        <option>Standard Single K450 + GST (Breakfast, WIFI, Airport Transfer)</option>
+                        <option>Standard Double K520 + GST (Breakfast, WIFI, Airport Transfer)</option>
+                        <option>Executive Single K500 + GST (Breakfast, WIFI, Airport Transfer)</option>
+                    </select>
+
+                    <!-- Transfer -->
+                    <h6>Airport Transfer</h6>
+                    <select name="transfer" class="form-control mb-3">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+
+                    <!-- Message -->
+                    <h6>Special Requests</h6>
+                    <textarea name="message" class="form-control mb-4" rows="4"></textarea>
+
+                    <button type="submit" class="btn_1 w-100">Submit Booking</button>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const checkin = document.getElementById("checkin");
+        const checkout = document.getElementById("checkout");
+
+        // Get today's date in YYYY-MM-DD
+        let today = new Date().toISOString().split("T")[0];
+
+        // ❌ Disable past dates
+        checkin.setAttribute("min", today);
+        checkout.setAttribute("min", today);
+
+        // When check-in changes
+        checkin.addEventListener("change", function () {
+            let checkinDate = checkin.value;
+
+            // Checkout cannot be before check-in
+            checkout.setAttribute("min", checkinDate);
+
+            // Auto-set checkout to next day if empty or invalid
+            if (!checkout.value || checkout.value <= checkinDate) {
+                let nextDay = new Date(checkinDate);
+                nextDay.setDate(nextDay.getDate() + 1);
+                checkout.value = nextDay.toISOString().split("T")[0];
+            }
+        });
+
+    });
+</script>
+
+
+</body>
+<script>'undefined'=== typeof _trfq || (window._trfq = []);'undefined'=== typeof _trfd && (window._trfd=[]),_trfd.push({'tccl.baseHost':'secureserver.net'},{'ap':'cpsh-oh'},{'server':'sg2plzcpnl509380'},{'dcenter':'sg2'},{'cp_id':'10692023'},{'cp_cl':'8'}) // Monitoring performance to make your website faster. If you want to opt-out, please contact web hosting support.</script><script src='../img1.wsimg.com/signals/js/clients/scc-c2/scc-c2.min.js'></script>
+<!-- Mirrored from crownhotel.com.pg/booking.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Jun 2026 02:26:20 GMT -->
+</html>
